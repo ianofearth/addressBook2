@@ -25,12 +25,17 @@ function resetFields() {
   $("input.new-street").val("");
   $("input.new-city").val("");
   $("input.new-state").val("");
+  $("input.new-type").val("");
+  $(".new-address").not(":first").remove();
 }
 
 $(document).ready(function() {
   $("#add-address").click(function(){
-    $(".new-address").clone().appendTo("#new-addresses");
-
+    $(".new-address").last().clone().appendTo("#new-addresses");
+    $(".new-address").last().hide().fadeIn();
+    $(".new-address").last().find("input").each(function(){
+      $(this).val("");
+    });
     // $("#new-addresses").append('<div class="new-address">' +
     //                               '<h2>Address Field</h2>' +
     //                              '<div class="form-group">' +
